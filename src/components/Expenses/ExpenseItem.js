@@ -15,7 +15,9 @@ const ExpenseItem = (props) => {
 
   const [expenseAmount,setAmount] = useState(props.amount);
   const discountHandler = ()=>{
-    setAmount(expenseAmount*0.8)
+    let n=expenseAmount*0.8
+    n=Math.round(n*100)/100
+    setAmount(n)
 
   }
 
