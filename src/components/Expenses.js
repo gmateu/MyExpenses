@@ -22,6 +22,11 @@ function Expenses(props) {
         amount={expenses[2].amount}
         date={expenses[2].date}
       />
+      <ExpenseItem
+        title={expenses[3].title}
+        amount={expenses[3].amount}
+        date={expenses[3].date}
+      />
     </Card>
   );
 }
