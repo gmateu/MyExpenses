@@ -1,10 +1,24 @@
 //https://vscode.dev/tunnel/manjarodesktop/home/guillem/react/01-starting-setup
+import React,{useState} from 'react';
 import Card from "../UI/Card"
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 const ExpenseItem = (props) => {
-  const expenseTitle = props.title;
-  const expenseAmount = props.amount;
+  
+  const [expenseTitle,setTitle]=useState(props.title);
+  const clickHandler=()=>{
+    setTitle("updated")
+    console.log(expenseTitle);
+  }
+
+
+
+  const [expenseAmount,setAmount] = useState(props.amount);
+  const discountHandler = ()=>{
+    setAmount(expenseAmount*0.8)
+
+  }
+
 
   return (
     <Card className="expense-item">
@@ -13,6 +27,8 @@ const ExpenseItem = (props) => {
         <h2>{expenseTitle}</h2>
         <div className="expense-item__price">{expenseAmount}€</div>
       </div>
+      <button onClick={clickHandler}>Change Title</button>
+      <button onClick={discountHandler}>Apply discount</button>
     </Card>
   );
 }
