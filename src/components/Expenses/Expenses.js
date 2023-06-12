@@ -10,11 +10,9 @@ const Expenses = (props) => {
     console.log("setFilterYear in Expenses.js", year);
   }
   return (
-    <div>
+      
       <Card className="expenses">
         <ExpensesFilter onSetFilterYear={setFilterYear} />
-      </Card>
-      <Card className="expenses">
         <ExpenseItem
           title={expenses[0].title}
           amount={expenses[0].amount}
@@ -36,7 +34,6 @@ const Expenses = (props) => {
           date={expenses[3].date}
         />
       </Card>
-    </div>
   );
 };
 
