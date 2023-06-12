@@ -18,7 +18,6 @@ const ExpenseItem = (props) => {
     let n=expenseAmount*0.8
     n=Math.round(n*100)/100
     setAmount(n)
-
   }
 
 
