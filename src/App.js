@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
+import Card from "./components/UI/Card";
+
 import NewExpense from "./components/NewExpense/NewExpense";
+import "./components/NewExpense/ExpenseForm.css";
 
 const DUMMY_EXPENSES = [
   { title: "Assegurança cotxe", amount: 357.25, date: new Date(2023, 5, 28) },
@@ -27,6 +30,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [showForm, setShowForm] = useState(false);
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
@@ -34,10 +38,35 @@ const App = () => {
     console.log("in app.js", expense);
   };
 
+  const togleShowForm = () => {
+    if (showForm) {
+      setShowForm(false);
+    } else {
+      setShowForm(true);
+    }
+  };
+
+  let contentForm = (
+    <Card className="expenses">
+      <div className="new-expense__actions">
+        <button onClick={togleShowForm}>Add Expense</button>
+      </div>
+    </Card>
+  );
+  if (showForm) {
+    contentForm = (
+      <NewExpense
+        onTogleShowForm={togleShowForm}
+        onAddExpense={addExpenseHandler}
+      />
+    );
+  }
+
   return (
     <div>
       <h2>Let's get started</h2>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      {contentForm}
+
       <Expenses expenses={expenses} />
     </div>
   );
