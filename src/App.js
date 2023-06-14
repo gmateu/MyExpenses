@@ -38,34 +38,14 @@ const App = () => {
     console.log("in app.js", expense);
   };
 
-  const togleShowForm = () => {
-    if (showForm) {
-      setShowForm(false);
-    } else {
-      setShowForm(true);
-    }
-  };
-
-  let contentForm = (
-    <Card className="expenses">
-      <div className="new-expense__actions">
-        <button onClick={togleShowForm}>Add Expense</button>
-      </div>
-    </Card>
-  );
-  if (showForm) {
-    contentForm = (
-      <NewExpense
-        onTogleShowForm={togleShowForm}
-        onAddExpense={addExpenseHandler}
-      />
-    );
-  }
+  
 
   return (
     <div>
       <h2>Let's get started</h2>
-      {contentForm}
+      <NewExpense
+        onAddExpense={addExpenseHandler}
+      />
 
       <Expenses expenses={expenses} />
     </div>
